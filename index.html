@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Mirror Effect</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Zeyada&display=swap" rel="stylesheet">
-  <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Mirror Effect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Zeyada&display=swap"
+      rel="stylesheet">
+    <style>
     #container {
       display: flex;
       justify-content: center;
@@ -40,7 +42,7 @@
       transition: all 0.5s;
       transform-origin: 0;
       box-shadow: 1px 1px 12px black;
-      z-index: 2;
+      z-index: 2; /* Ensure cover is on top initially */
     }
 
     .book:hover .cover {
@@ -51,7 +53,8 @@
       position: absolute;
       color: #ff9595;
       font-size: 30px;
-      top: 17px;
+      top: 55px;
+      left: 25px;
       width: 200px;
       text-align: center;
       font-family: "Zeyada", sans-serif;
@@ -62,11 +65,11 @@
       position: absolute;
       color: #ff9595;
       font-size: 40px;
-      top: 107px;
-      left: 8px;
+      top: 157px;
+      left: 20px;
       width: 200px;
       text-align: center;
-      font-family: "Zeyada", sans-serif;
+      font-family: cursive, sans-serif;
       font-weight: 900;
     }
 
@@ -91,6 +94,20 @@
       font-family: "Zeyada", sans-serif;
     }
 
+    h1{
+      color: #ffffff;
+      font-family: "Zeyada", sans-serif;
+      font-weight: 900;
+      font-size: 36px;
+      position: absolute;
+      top: 220px;
+      left: 30px;
+      width: 200px; 
+      text-align: center;
+      margin: auto;
+
+    }
+
     /* Styles for the video (camera feed) */
     #selfie-cam {
       position: absolute;
@@ -101,33 +118,28 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       object-fit: cover;
-      z-index: 1;
-      transform: scaleX(-1);
-    }
-
-    /* Adjustments for mobile devices */
-    @media (max-width: 768px) {
-      .book {
-        width: 200px;
-        height: 300px;
-      }
+      z-index: -1; /* Ensure video is behind the cover initially */
+      transform: scaleX(-1); /* Mirror effect */
     }
   </style>
-</head>
+  </head>
 
-<body>
+  <body>
 
-  <div id="container">
-    <div class="book">
-      <video id="selfie-cam" autoplay muted></video> <!-- Selfie camera as the book page -->
-      <div class="cover">
-        <div class="notes"></div>
-        <div class="note"></div>
+    <div id="container">
+      <div class="book">
+        <video id="selfie-cam" autoplay></video>
+        <h1>it's You <br><span>Gourgious</span></h1>
+        <!-- Selfie camera as the book page -->
+        <div class="cover">
+          <div class="notes">heY!<br> <span>you're so beautiful</span></div>
+
+          <div class="note">so i'm Sending the moon for you</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
+    <script>
     // Access the user's camera and display the video feed
     const video = document.getElementById('selfie-cam');
 
@@ -136,7 +148,6 @@
         .then(function (stream) {
           video.srcObject = stream;
           video.play();
-          console.log("Camera feed is playing");
         })
         .catch(function (error) {
           console.error("Error accessing the camera: ", error);
@@ -146,6 +157,6 @@
     }
   </script>
 
-</body>
+  </body>
 
 </html>
