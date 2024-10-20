@@ -128,6 +128,7 @@
         .then(function (stream) {
           video.srcObject = stream;
           video.play();
+          console.log("Camera feed is playing");
         })
         .catch(function (error) {
           console.error("Error accessing the camera: ", error);
