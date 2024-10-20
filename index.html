@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Varnika's Birthday</title>
+  <title>Book Mirror Effect</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Zeyada&display=swap" rel="stylesheet">
@@ -22,7 +23,7 @@
       border-radius: 10px;
       width: 270px;
       height: 400px;
-      background-color: lightgray; /* Removing image, added a plain background */
+      background-color: lightgray;
       box-shadow: 1px 1px 12px black;
       transform: perspective(2000px) rotateX(0deg) rotateY(0deg);
       transition: transform 0.3s ease-in-out;
@@ -79,14 +80,14 @@
     }
 
     .notes:before {
-      content: "Birthday";
+      content: "";
       top: 30px;
       color: #d04e4e;
       font-family: "Zeyada", cursive;
     }
 
     .notes:after {
-      content: "day!";
+      content: "";
       top: 60px;
       font-family: "Zeyada", sans-serif;
     }
@@ -102,6 +103,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       object-fit: cover;
       z-index: 1;
+      transform: scaleX(-1); /* Mirror effect */
     }
   </style>
 </head>
@@ -112,8 +114,8 @@
     <div class="book">
       <video id="selfie-cam" autoplay></video> <!-- Selfie camera as the book page -->
       <div class="cover">
-        <div class="notes">Happy</div>
-        <div class="note">Varnika</div>
+        <div class="notes"></div>
+        <div class="note"></div>
       </div>
     </div>
   </div>
@@ -128,7 +130,7 @@
           video.srcObject = stream;
           video.play();
         })
-        .catch(function (error) {
+        .catch(function (error) {  
           console.error("Error accessing the camera: ", error);
         });
     } else {
